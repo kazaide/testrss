@@ -2,7 +2,7 @@ name: Update News
 
 on:
   schedule:
-    - cron: '0 0 * * *' #  S'exécute tous les jours à minuit UTC
+    - cron: '0 0 * * *' # S'exécute tous les jours à minuit UTC
   push:
     branches:
       - main
@@ -22,7 +22,7 @@ jobs:
 
       - name: Install dependencies
         run: |
-          pip install feedparser google-auth google-auth-oauthlib google-auth-httplib2 google-api-python-client
+          pip install -r requirements.txt
 
       - name: Configure Google Credentials
         run: echo "${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}" > credentials.json
@@ -31,4 +31,6 @@ jobs:
         run: chmod +x essai.py
 
       - name: Run update script
+        env:
+          GOOGLE_APPLICATION_CREDENTIALS: ${{ github.workspace }}/credentials.json
         run: python essai.py
