@@ -19,7 +19,7 @@ credentials = service_account.Credentials.from_service_account_info({
   "universe_domain": "googleapis.com"
 })
 
-drive_service = build('drive', 'v3')
+drive_service = build('drive', 'v3', credentials=credentials)
 
 # ID du fichier Google Drive à mettre à jour
 file_id = '1NReU-VMrUnQoxBQa5d78tBS6jHu9wVl5nenKlYLx6ys'
