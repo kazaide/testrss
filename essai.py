@@ -1,9 +1,8 @@
-!pip install feedparser google-auth google-auth-oauthlib google-auth-httplib2 google-api-python-client
-
-from google.colab import auth
+import os
+import feedparser
+from google.oauth2 import service_account
 from googleapiclient.discovery import build
 from googleapiclient.http import MediaFileUpload
-import feedparser
 
 # Authenticate and create the service
 auth.authenticate_user()
