@@ -1,0 +1,48 @@
+!pip install feedparser google-auth google-auth-oauthlib google-auth-httplib2 google-api-python-client
+
+from google.colab import auth
+from googleapiclient.discovery import build
+from googleapiclient.http import MediaFileUpload
+import feedparser
+
+# Authenticate and create the service
+auth.authenticate_user()
+drive_service = build('drive', 'v3')
+
+# ID du fichier Google Drive à mettre à jour
+file_id = '1sa6k9T28aIbU4ig4TDgMrWEeT6txaLYTdQwYY2qm22A'
+
+def get_rss_feed(url):
+    return feedparser.parse(url)
+
+def parse_feed(feed):
+    entries = feed['entries']
+    summary = ''
+    for entry in entries:
+        title = entry.get('title', 'No Title')
+        link = entry.get('link', '')
+        published = entry.get('published', 'No Date')
+        summary += f"- **{title}** ({published})\n{link}\n\n"
+    return summary
+
+# Liste des flux RSS à lire
+rss_feeds = [
+    'https://www.france24.com/fr/rss',
+    'https://www.lemonde.fr/rss/en_continu.xml'
+]
+
+all_news = '### Résumé de l\'actualité politique récente\n\n'
+for url in rss_feeds:
+    feed = get_rss_feed(url)
+    all_news += parse_feed(feed)
+
+# Écriture dans un fichier temporaire
+file_name = 'Résumé_Actualité_Politique.txt'
+with open(file_name, 'w') as file:
+    file.write(all_news)
+
+# Upload the updated file to Google Drive
+media = MediaFileUpload(file_name, mimetype='text/plain')
+updated_file = drive_service.files().update(fileId=file_id, media_body=media).execute()
+
+print(f"File updated with ID: {updated_file.get('id')}")
