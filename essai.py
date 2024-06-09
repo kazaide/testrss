@@ -5,7 +5,8 @@ from googleapiclient.discovery import build
 from googleapiclient.http import MediaFileUpload
 
 # Charger les credentials depuis le fichier JSON
-credentials = service_account.Credentials.from_service_account_file('first.json')
+credentials = service_account.Credentials.from_service_account_file(
+    os.getenv('GOOGLE_APPLICATION_CREDENTIALS')
 )
 
 # Créer le service Google Drive
