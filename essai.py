@@ -4,12 +4,16 @@ from google.oauth2 import service_account
 from googleapiclient.discovery import build
 from googleapiclient.http import MediaFileUpload
 
-# Authenticate and create the service
-auth.authenticate_user()
-drive_service = build('drive', 'v3')
+# Charger les credentials depuis le fichier JSON
+credentials = service_account.Credentials.from_service_account_file(
+    os.getenv('GOOGLE_APPLICATION_CREDENTIALS')
+)
+
+# Créer le service Google Drive
+drive_service = build('drive', 'v3', credentials=credentials)
 
 # ID du fichier Google Drive à mettre à jour
-file_id = '1sa6k9T28aIbU4ig4TDgMrWEeT6txaLYTdQwYY2qm22A'
+file_id = 'VOTRE_FICHIER_ID'
 
 def get_rss_feed(url):
     return feedparser.parse(url)
