@@ -2,7 +2,7 @@ name: Update News
 
 on:
   schedule:
-    - cron: '0 0 * * *' # S'exécute tous les jours à minuit UTC
+    - cron: '0 0 * * *' #  S'exécute tous les jours à minuit UTC
   push:
     branches:
       - main
