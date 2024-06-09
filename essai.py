@@ -5,7 +5,7 @@ from googleapiclient.discovery import build
 from googleapiclient.http import MediaFileUpload
 
 # Charger les credentials depuis le fichier JSON
-credentials_file = 'kaz.json'
+credentials_file = 'credentials.json'
 
 # Créer le service Google Drive
 drive_service = build('drive', 'v3')
