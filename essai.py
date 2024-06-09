@@ -17,7 +17,7 @@ credentials = service_account.Credentials.from_service_account_info({
   "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
   "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/kazarca%40second-my-project-88373.iam.gserviceaccount.com",
   "universe_domain": "googleapis.com"
-}
+})
 
 drive_service = build('drive', 'v3', credentials=credentials)
 
