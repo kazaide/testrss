@@ -1,0 +1,30 @@
+name: Update News
+
+on:
+  schedule:
+    - cron: '0 0 * * *' # S'exécute tous les jours à minuit UTC
+  push:
+    branches:
+      - main
+
+jobs:
+  update-news:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.x'
+
+      - name: Install dependencies
+        run: |
+          pip install feedparser google-auth google-auth-oauthlib google-auth-httplib2 google-api-python-client
+
+      - name: Run update script
+        env:
+          GOOGLE_APPLICATION_CREDENTIALS: ${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}
+        run: python votre_script.py
