@@ -27,7 +27,8 @@ jobs:
       - name: Configure Google Credentials
         run: echo "${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}" > credentials.json
 
+      - name: Make script executable
+        run: chmod +x essai.py
+
       - name: Run update script
-        env:
-          GOOGLE_APPLICATION_CREDENTIALS: ${{ github.workspace }}/credentials.json
         run: python essai.py
