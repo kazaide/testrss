@@ -5,7 +5,7 @@ from googleapiclient.discovery import build
 from googleapiclient.http import MediaFileUpload
 
 # Créer le service Google Drive
-credentials = {
+credentials = service_account.Credentials.from_service_account_info({
   "type": "service_account",
   "project_id": "second-my-project-88373",
   "private_key_id": "dada73855d6e2b07aa4dab22c8812e5f228178c2",
