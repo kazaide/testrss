@@ -8,10 +8,10 @@ from googleapiclient.http import MediaFileUpload
 credentials_file = 'kaz.json'
 
 # Créer le service Google Drive
-drive_service = build('drive', 'v3', credentials=credentials)
+drive_service = build('drive', 'v3')
 
 # ID du fichier Google Drive à mettre à jour
-file_id = 'VOTRE_FICHIER_ID'
+file_id = '1sa6k9T28aIbU4ig4TDgMrWEeT6txaLYTdQwYY2qm22A'
 
 def get_rss_feed(url):
     return feedparser.parse(url)
