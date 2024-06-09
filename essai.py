@@ -22,7 +22,7 @@ credentials = service_account.Credentials.from_service_account_info({
 drive_service = build('drive', 'v3', credentials=credentials)
 
 # ID du fichier Google Drive à mettre à jour
-file_id = '1sa6k9T28aIbU4ig4TDgMrWEeT6txaLYTdQwYY2qm22A'
+file_id = '1NReU-VMrUnQoxBQa5d78tBS6jHu9wVl5nenKlYLx6ys'
 
 def get_rss_feed(url):
     return feedparser.parse(url)
